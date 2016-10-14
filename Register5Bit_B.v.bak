@@ -1,0 +1,35 @@
+module Register5Bit_B (clock, reset, store, read, enable, loaded, shiftToA);
+	input clock, reset, enable;
+	input [4:0] store;
+	output reg [4:0] read;
+	output reg loaded, shiftToA;
+	reg [4:0] fiveBit;
+	
+	initial 
+	begin
+	fiveBit = 5'b11111;
+	loaded = 0;
+	shiftToA = 0;
+	end
+	always @ (posedge clock)
+	begin
+		if (reset)
+		begin
+			fiveBit <= 5'b11111;
+			loaded <= 0;
+			shiftToA <= 0;
+		end 
+		if ((enable) && (store != 5'b11111))
+		begin
+			if (loaded)
+				shiftToA <= 1;
+				
+			fiveBit <= store;
+			loaded <= 1;
+		end 
+		
+		read <= fiveBit;
+			
+	end
+	
+endmodule

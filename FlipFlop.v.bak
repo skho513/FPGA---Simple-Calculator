@@ -1,0 +1,21 @@
+module FlipFlop (clock, reset, store, read, enable);
+	input clock, reset, enable;
+	input store;
+	output reg read;
+	reg Bit;
+	
+	initial Bit = 0;
+	
+	always @ (posedge clock)
+	begin
+		if (reset)
+			Bit = 0;
+		
+		if (enable) 
+			Bit = 1;
+		
+		read <= Bit;
+			
+	end
+	
+endmodule

@@ -1,0 +1,34 @@
+// This program provides a debouncing function for the rising edge of a button press.
+// It is coded assuming the button has an active high operation, but it is also possible
+// to be used for a button with an active low operaiton.
+// Author: PewPew
+module Debounce( enable, clock500, button_press, button_state);
+
+	input clock500, button_press, enable;
+	output reg button_state;
+
+	always @(posedge clock500) begin
+
+		if (!enable) begin								// If not enabled, do not debounce.
+		
+			button_state = button_press;
+			sample = 4'b1111;
+
+		end else begin										// Else, debounce the buttons.
+
+			sample[0] <= sample[1];						// Shift registers:
+			sample[1] <= sample[2];						// Value is stored into sample[3] and...
+			sample[2] <= sample[3];						// ...shifted along into sample[0].
+			sample[3] <= button_press;
+				
+			if ( sample == 4'b0000 ) begin			// Pressed state.
+				button_state = 0;
+			end else if (sample == 4'b1111) begin	// Un-pressed state.
+				button_state = 1;
+			end
+
+		end
+	
+	end
+	
+endmodule

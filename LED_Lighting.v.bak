@@ -1,0 +1,32 @@
+module LED_Lighting (redLED, greenLED, Error, PowerOn, A, B);
+	output reg [17:0] redLED;
+	output reg [8:0] greenLED;
+	input Error, PowerOn, A, B;
+
+	always @ (Error, PowerOn, A, B)
+	begin
+		if (Error | ~PowerOn)
+	//Turn on all red LEDs and turn off green LEDs
+		begin
+			redLED = 18'H3FFFF;
+			greenLED[8:0] = 9'H0;
+		end
+		else
+	//Turn on all green LEDs and turn off red LEDs
+		begin
+			redLED = 18'H0;
+			greenLED = 9'H3F;
+			
+			if (A)
+				greenLED[8] = 1;
+			else
+				greenLED[8] = 0;
+			
+			if (B)
+				greenLED[7] = 1;
+			else
+				greenLED[7] = 0;	
+				
+		end
+	end 
+endmodule

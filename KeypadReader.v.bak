@@ -1,0 +1,33 @@
+module KeypadReader (clock, Cols, Rows, button, validPress, enableSignal);
+	input clock;
+	input Rows; //read in rows of keypad
+	output reg Cols; //write to columns of keypad
+	output [3:0] button;
+	reg buttonPressed; //True if a button has been pressed
+	
+	initial
+	begin
+		buttonPressed = 0
+		Cols = 4'b0111; //Set the first column
+	end
+	
+	always @ (posedge clock)
+	begin
+	//If no button has been pressed, keep setting one column at a time
+		if (Rows == 4'b1111)
+		begin
+			Cols[3] <= Cols[0];
+			Cols[2] <= Cols[3];
+			Cols[1] <= Cols[2];
+			Cols[0] <= Cols[1];
+			
+			buttonPressed = 0;
+		end
+	//Else a button has been pressed
+		else
+			buttonPressed = 1
+	end
+	
+	
+	
+endmodule

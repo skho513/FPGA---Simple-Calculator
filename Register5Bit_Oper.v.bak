@@ -1,0 +1,17 @@
+module Register5Bit_Oper (clock, reset, store, read, press, enable);
+	input clock, reset, enable, press;
+	input [4:0] store;
+	output reg [4:0] read;
+	
+	
+	always @ (posedge clock)
+	begin
+		if (reset)
+			read <= 5'b11111;
+		
+		if (enable && (store != 5'b11111) && press)
+			read <= store;
+		 			
+	end
+	
+endmodule

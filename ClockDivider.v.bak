@@ -1,0 +1,17 @@
+module ClockDivider (clock50, clock500)
+	input clock50;
+	output reg clock500;
+	reg [23:0] counter;
+	
+	always @ (posedge clock50)
+	begin
+			if (counter == 24'd100000)
+			begin
+				counter = 0;
+				clock500 = ~clock500;
+			end
+			else
+				counter = counter + 1;
+	end
+
+endmodule

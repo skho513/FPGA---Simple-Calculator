@@ -1,0 +1,63 @@
+module ButtonType (clock, validPress, button, isNumber, isOper, isClear, isNegative, isEqual);
+	input validPress;
+	input clock;
+	input [3:0] button;
+	output reg isNumber, isOper, isClear, isNegative, isEqual;
+	
+	initial
+	begin
+		isNumber = 0;
+		isOper = 0;
+		isClear = 0;
+		isNegative = 0;
+		isEqual = 0;
+	end
+	
+	always @ (posedge clock)
+	begin
+		if (validPress)
+		//button pressed was a number
+			if (button <= 4'd9)
+			begin 
+				isNumber = 1;
+				isOper = 0;
+				isClear = 0;
+				isNegative = 0;
+				isEqual = 0;
+			end
+		//button pressed was an operant
+			else if (button < 4'd15)
+			begin
+				isNumber = 0;
+				isClear = 0;
+				isOper = 1;
+				if (button == 11)
+					isNegative = 1;
+				else if (button == 14)
+					isEqual = 1;
+				else
+				begin
+					isNegative = 0;
+					isEqual = 0;
+				end
+			end
+		//else button is clear
+			else
+			begin 
+				isNumber = 0;
+				isOper = 0;
+				isClear = 1;
+				isNegative = 0;
+				isEqual = 0;
+			end
+		else
+			begin
+				isNumber = 0;
+				isOper = 0;
+				isClear = 0;
+				isNegative = 0;
+				isEqual = 0;
+			end
+	end
+	
+endmodule

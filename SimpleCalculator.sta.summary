@@ -1,0 +1,125 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'ClockDivider:comb_3|clock500'
+Slack : -6.167
+TNS   : -157.631
+
+Type  : Slow Model Setup 'FSM:comb_4|OUTcalcActive'
+Slack : -3.767
+TNS   : -26.861
+
+Type  : Slow Model Setup 'FSM:comb_4|currentState[1]'
+Slack : -2.664
+TNS   : -26.041
+
+Type  : Slow Model Setup 'FSM:comb_4|currentState[0]'
+Slack : -2.656
+TNS   : -24.909
+
+Type  : Slow Model Setup 'CLOCK_50'
+Slack : -2.225
+TNS   : -38.611
+
+Type  : Slow Model Hold 'ClockDivider:comb_3|clock500'
+Slack : -2.841
+TNS   : -40.060
+
+Type  : Slow Model Hold 'CLOCK_50'
+Slack : -2.513
+TNS   : -2.513
+
+Type  : Slow Model Hold 'FSM:comb_4|currentState[0]'
+Slack : -2.413
+TNS   : -22.877
+
+Type  : Slow Model Hold 'FSM:comb_4|currentState[1]'
+Slack : -2.405
+TNS   : -24.332
+
+Type  : Slow Model Hold 'FSM:comb_4|OUTcalcActive'
+Slack : 0.926
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'CLOCK_50'
+Slack : -1.380
+TNS   : -26.380
+
+Type  : Slow Model Minimum Pulse Width 'ClockDivider:comb_3|clock500'
+Slack : -0.500
+TNS   : -58.000
+
+Type  : Slow Model Minimum Pulse Width 'FSM:comb_4|OUTcalcActive'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'FSM:comb_4|currentState[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'FSM:comb_4|currentState[1]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Setup 'ClockDivider:comb_3|clock500'
+Slack : -2.413
+TNS   : -46.070
+
+Type  : Fast Model Setup 'FSM:comb_4|OUTcalcActive'
+Slack : -1.511
+TNS   : -10.455
+
+Type  : Fast Model Setup 'FSM:comb_4|currentState[1]'
+Slack : -1.019
+TNS   : -5.361
+
+Type  : Fast Model Setup 'FSM:comb_4|currentState[0]'
+Slack : -0.861
+TNS   : -5.128
+
+Type  : Fast Model Setup 'CLOCK_50'
+Slack : -0.552
+TNS   : -5.815
+
+Type  : Fast Model Hold 'ClockDivider:comb_3|clock500'
+Slack : -1.753
+TNS   : -28.744
+
+Type  : Fast Model Hold 'CLOCK_50'
+Slack : -1.559
+TNS   : -1.559
+
+Type  : Fast Model Hold 'FSM:comb_4|currentState[0]'
+Slack : -1.407
+TNS   : -14.542
+
+Type  : Fast Model Hold 'FSM:comb_4|currentState[1]'
+Slack : -1.402
+TNS   : -15.203
+
+Type  : Fast Model Hold 'FSM:comb_4|OUTcalcActive'
+Slack : 0.841
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'CLOCK_50'
+Slack : -1.380
+TNS   : -26.380
+
+Type  : Fast Model Minimum Pulse Width 'ClockDivider:comb_3|clock500'
+Slack : -0.500
+TNS   : -58.000
+
+Type  : Fast Model Minimum Pulse Width 'FSM:comb_4|OUTcalcActive'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'FSM:comb_4|currentState[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'FSM:comb_4|currentState[1]'
+Slack : 0.500
+TNS   : 0.000
+
+------------------------------------------------------------

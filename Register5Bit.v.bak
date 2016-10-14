@@ -1,0 +1,15 @@
+module Register5Bit (clock, reset, store, read)
+	input clock, reset;
+	input [4:0] store;
+	output reg [4:0] read
+	reg read
+	
+	always @ (posedge clock)
+	begin
+		if (reset)
+			read = 0;
+		else
+			read = store;
+	end
+	
+endmodule

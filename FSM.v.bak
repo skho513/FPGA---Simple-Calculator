@@ -1,0 +1,36 @@
+module FSM (clock, INcalcActive, OUTcalcActive);
+	input clock;
+	input INcalcActive;
+	output reg OUTcalcActive;
+	
+	reg [3:0] currentState;
+	
+	initial
+	begin
+		currentState = 4'd0;
+		OUTcalcActive = 0;
+	end
+	
+	always @ (posedge clock)
+	begin
+		if(~INcalcActive)
+			currentState = 4'd0;
+		else
+			currentState = 4'd1;
+	end 
+	
+	always @ (currentState)
+	begin
+		case (currentState)
+		//Calculator switched off
+			4'd0:
+				begin
+					OUTcalcActive = 0;
+				end
+		//Calculator switched on
+			4'd1:
+				begin
+					OUTcalcActive = 1;
+				end
+	end
+endmodule

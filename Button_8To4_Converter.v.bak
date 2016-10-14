@@ -1,0 +1,38 @@
+//Converts an 8bit signal from keypad to a 4 bit signal to represent button
+module Button_8To4_Converter(eightBitButton, fourBitChar, enableSignal);
+	input [7:0]eightBitButton; //8 bit button sequence to convert
+	input enableSignal;
+	output reg [3:0]fourBitChar; //4 bit converted output that represents a character
+	
+	always@ (eightBitButton)
+		begin
+			if (enableSignal)
+			begin
+				case (eightBitButton)
+				//Column 0
+					8'b01110111 : fourBitChar = 4'b0001; 	//Button 1
+					8'b01111011 : fourBitChar = 4'b0100;	//Button 4
+					8'b01111101 : fourBitChar = 4'b0111;	//Button 7
+					8'b01111110 : fourBitChar = 4'b1111;	//Button A (clear)
+				//Column 1
+					8'b10110111 : fourBitChar = 4'b0010; 	//Button 2
+					8'b10111011 : fourBitChar = 4'b0101;	//Button 5
+					8'b10111101 : fourBitChar = 4'b1000;	//Button 8
+					8'b10111110 : fourBitChar = 4'b0000;	//Button 0 
+				//Column 2
+					8'b11010111 : fourBitChar = 4'b0011; 	//Button 3
+					8'b11011011 : fourBitChar = 4'b0110;	//Button 6
+					8'b11011101 : fourBitChar = 4'b1001;	//Button 9
+					8'b11011110 : fourBitChar = 4'b1110;	//Button =
+				//Column 3
+					8'b11100111 : fourBitChar = 4'b1010; 	//Button +
+					8'b11101011 : fourBitChar = 4'b1011;	//Button -
+					8'b11101101 : fourBitChar = 4'b1100;	//Button *
+					8'b11101110 : fourBitChar = 4'b1101;	//Button /
+					
+					default : fourBitChar = 4'b1111;	// Other wise always clear
+				endcase
+			end
+		end
+		
+endmodule
